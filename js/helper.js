@@ -5,6 +5,7 @@ This file contains all of the code running in the background that makes resumeBu
 Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
 
 Cameron Pittman
+Wesam Al-Haddad
 */
 
 
@@ -35,6 +36,10 @@ var HTMLworkTitle = ' - %data%</a>';
 var HTMLworkDates = '<div class="date-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
+//TODO add some styling
+var HTMLworkBulletStart = '<ul>';
+var HTMLworkBulletPoint = '<li>%data%</li>';
+var HTMLworkBulletEnd = '</ul>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
@@ -49,7 +54,9 @@ var HTMLschoolDates = '<div class="date-text">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Major: %data%</em>';
 
-var HTMLonlineClasses = '<h3>Online Classes</h3>';
+var HTMLonlineClasses = '<h3>Online Courses</h3>';
+
+//var HTMLonlineStart = '<div class="online-entry"></div>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
@@ -62,9 +69,11 @@ var googleMap = '<div id="map"></div>';
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
+//$("#main").append(internationalizeButton);
+//TODO review and see if I can move to resume builder
 $(document).ready(function() {
   $('button').click(function() {
-    var iName = inName() || function(){};
+    var iName = inName(bio.name) || function(){};
     $('#name').html(iName);  
   });
 });
@@ -85,8 +94,17 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
+  logClicks(loc.pageX,loc.pageY);
 });
+
+function inName(oldName) {
+  var finalName;
+  finalName = oldName.trim().split(' ');
+  finalName[0] = finalName[0].slice(0,1).toUpperCase()+
+           finalName[0].slice(1).toLowerCase();
+  finalName[1] = finalName[1].slice(0).toUpperCase();
+  return finalName[0]+' '+finalName[1];
+} 
 
 
 
@@ -97,7 +115,6 @@ https://developers.google.com/maps/documentation/javascript/reference
 */
 var map;    // declares a global map variable
 
-
 /*
 Start here! initializeMap() is called when page is loaded.
 */
@@ -106,12 +123,19 @@ function initializeMap() {
   var locations;
 
   var mapOptions = {
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    //options
+    zoom: 10,
+    center: new google.maps.LatLng(49.25, -123.1)
   };
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+
+  //test
+  //map.setZoom(15);
+  //map.setCenter(49.25, -123.1);
 
 
   /*
@@ -168,9 +192,12 @@ function initializeMap() {
       content: name
     });
 
-    // hmmmm, I wonder what this is about...
+   
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      map.setZoom(8);
+      map.setCenter(marker.getPosition());
+     // map.panTo(marker.getPosition());
+      infowindow.open(map,marker);
     });
 
     // this is where the pin actually gets added to the map.
@@ -221,23 +248,18 @@ function initializeMap() {
 
   // locations is an array of location strings returned from locationFinder()
   locations = locationFinder();
-
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
 
 }
 
-/*
-Uncomment the code below when you're ready to implement a Google Map!
-*/
-
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});

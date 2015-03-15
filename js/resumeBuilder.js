@@ -14,7 +14,7 @@ var bio = {
 		"blog": "http://vandevsam.com/blog",
 		"location": "Vancouver, BC"
 	},
-	"pic": "images/fry.jpg",
+	"pic": "images/wesam-portrait.png",
 	"welcome": "There is no substitute for hard work - Thomas Edison",
 	"skills": ["HTML/CSS  ","Java  ","Javascript  ","Android"],
 	display : function () {
@@ -200,7 +200,7 @@ var projects = {
 			"title": "Android App ShareLoc",
 			"date": "2014-2015",
 			"description": "An Android application to store and share locations in public or private groups.",
-			"images" : [],
+			"images" : ["images/shareloc-icon.png"],
 			"url": "http://vandevsam.com"
 		},
 		{
@@ -226,6 +226,14 @@ var projects = {
 			var projectdesc = HTMLprojectDescription.replace("%data%",projects.projects[p].description);
 			var projectdate = HTMLprojectDates.replace("%data%",projects.projects[p].date);
 			$(".project-entry:last").append(projecttitle+projectdate+projectdesc);
+
+			if(projects.projects[p].images.length>0) {
+				for (var i = 0; i < projects.projects[p].images.length; i++) {
+					var image = HTMLprojectImage.replace("%data%",projects.projects[p].images[i]);
+					$(".project-entry:last").append(image);
+				};				
+			}
+
 		};		
 	} 
 }

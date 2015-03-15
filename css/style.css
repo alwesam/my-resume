@@ -143,12 +143,15 @@ ul {
 .biopic {
   float: left;
   padding: 10px;
-  width: 200px;
+  width: 150px;
   display: none;
 }
 
 img {
   padding: 10px;
+  /*resize*/
+  width: 280px;
+  height: auto;
 }
 
 /* Bar chart stuff */

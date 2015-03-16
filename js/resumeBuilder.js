@@ -6,7 +6,7 @@
 //first object: Bio
 var bio = {
 	"name": "Wesam Al-Haddad",
-	"role": "Web Developer",
+	"role": "Software Developer",
 	"contacts": {
 		"mobile": "604-379-9434",
 		"email": "alwesam@vandevsam.com",
@@ -77,14 +77,14 @@ var education = {
 			"name": "Queen's University",
 			"years": "2004",
 			"degree": "B.Sc.",
-			"major": "Electrical and Computer Engineering",
+			"major": "Electrical and Computer Engineering (First Class Honours)",
 			"location": "Kingston, ON",
 			"url" : "http://www.queensu.ca"
 		}
 	],
 	"online" : [
 		{
-			"title": "Front-end Web Developer Nanodegree",
+			"title": "Front-end Web Developer Nanodegree (in progress)",
 			"school": "Udacity",
 			"dates": 2015,
 			"url": "http://www.udacity.com",
@@ -197,11 +197,11 @@ work.display();
 var projects = {
 	"projects" : [
 		{
-			"title": "Android App ShareLoc",
+			"title": "Android App ShareSpot",
 			"date": "2014-2015",
-			"description": "An Android application to store and share locations in public or private groups.",
+			"description": "An Android application to store and share locations in public or private groups.  Currenlty in beta release.",
 			"images" : ["images/shareloc-icon.png"],
-			"url": "http://vandevsam.com"
+			"url": "http://vandevsam.com/blog/category/android/"
 		},
 		{
 			"title": "Frogger",
@@ -223,6 +223,7 @@ var projects = {
 		for (var p in projects.projects) {	
 			$("#projects").append(HTMLprojectStart);
 			var projecttitle = HTMLprojectTitle.replace("%data%",projects.projects[p].title);
+			projecttitle = projecttitle.replace("#",projects.projects[p].url);
 			var projectdesc = HTMLprojectDescription.replace("%data%",projects.projects[p].description);
 			var projectdate = HTMLprojectDates.replace("%data%",projects.projects[p].date);
 			$(".project-entry:last").append(projecttitle+projectdate+projectdesc);

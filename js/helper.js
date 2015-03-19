@@ -30,6 +30,10 @@ var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
+//navigation menu
+var HTMLnavStart = '<nav class="nav-entry"></nav>';
+var HTMLnavSection = '<a href="#">%data%</a>';
+
 var HTMLworkStart = '<div class="work-entry"></div>';
 var HTMLworkEmployer = '<a href="#">%data%';
 var HTMLworkTitle = ' - %data%</a>';
@@ -69,7 +73,6 @@ var googleMap = '<div id="map"></div>';
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
-//$("#main").append(internationalizeButton);
 //TODO review and see if I can move to resume builder
 $(document).ready(function() {
   $('button').click(function() {
@@ -107,7 +110,6 @@ function inName(oldName) {
 } 
 
 
-
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
@@ -125,18 +127,13 @@ function initializeMap() {
   var mapOptions = {
     disableDefaultUI: true,
     //options
-    zoom: 10,
-    center: new google.maps.LatLng(49.25, -123.1)
+    //zoom: 10,
+    //center: new google.maps.LatLng(49.25, -123.1)
   };
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-
-  //test
-  //map.setZoom(15);
-  //map.setCenter(49.25, -123.1);
-
 
   /*
   locationFinder() returns an array of every location string from the JSONs
@@ -194,10 +191,10 @@ function initializeMap() {
 
    
     google.maps.event.addListener(marker, 'click', function() {
-      map.setZoom(8);
-      map.setCenter(marker.getPosition());
+      //map.setZoom(8);
+      //map.setCenter(marker.getPosition());
      // map.panTo(marker.getPosition());
-      infowindow.open(map,marker);
+      infoWindow.open(map,marker);
     });
 
     // this is where the pin actually gets added to the map.

@@ -54,10 +54,12 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta name="viewport" content="width=device-width">
 </head>
 <body unresolved>
-  <div id="main">
-  
+  <div id="main">  
     <div id="header" class="center-content clearfix">
       <ul id="topContacts" class='flex-box'></ul>
+    </div>      
+    <div id="navigation">
+      <h2>Navigation Menu</h2>
     </div>
     <div style='clear: both;'></div>
     <div id="projects" class='gray'>
@@ -102,6 +104,9 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     }
     if(document.getElementsByTagName('h1').length === 0) {
       document.getElementById('header').style.display = 'none';
+    }
+    if(document.getElementsByClassName('nav-entry').length === 0) {
+      document.getElementById('navigation').style.display = 'none';
     }
     if(document.getElementsByClassName('work-entry').length === 0) {
       document.getElementById('workExperience').style.display = 'none';

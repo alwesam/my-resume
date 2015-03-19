@@ -58,10 +58,6 @@ var bio = {
 	}
 };
 
-
-//display bio info
-bio.display();
-
 //second object: education
 var education = {
 	"schools" : [
@@ -93,6 +89,11 @@ var education = {
 	],
 
 	display : function () {
+
+		//add to menu array
+		if (education.schools.length>0)
+			menuArray.push({menuID:'#education', menu:'Education'});
+
 		for (var e in education.schools) {	
 			$("#education").append(HTMLschoolStart);
 			var schoolname = HTMLschoolName.replace("%data%",education.schools[e].name);
@@ -125,17 +126,13 @@ var education = {
 
 };
 
-//placement
-education.display();
-education.displayonline();
-
 //third object: work
 var work = {
 	"jobs" : [
 		{
 			"employer": "PMC-Sierra",
 			"url" : "http://www.pmcs.com",
-			"date": "2010-2013",
+			"date": "May 2010- November 2013",
 			"title": "Product Design Engineer",	
 			"location": "Burnaby, BC",
 			"bullets" : [
@@ -150,7 +147,7 @@ var work = {
 		{
 			"employer": "University of Alberta, ECE Department",
 			"url" : "http://www.ece.ualberta.ca",
-			"date": "2007-2010",
+			"date": "January 2007- May 2010",
 			"title": "Graduate Research Assistant",
 			"location": "Edmonton, AB",
 			"bullets" : [
@@ -163,6 +160,8 @@ var work = {
 	],
 
 	display : function () {
+		if (work.jobs.length>0)
+			menuArray.push({menuID:'#workExperience', menu:'Work Experience'});
 		//format and placement
 		for (var j in work.jobs) {	
 			$("#workExperience").append(HTMLworkStart);
@@ -188,10 +187,6 @@ var work = {
 		};
 	}
 }
-
-//display work
-work.display();
-
 
 //fourth object: projects
 var projects = {
@@ -220,6 +215,9 @@ var projects = {
 	],
 
 	display : function () {
+		if (projects.projects.length>0){
+			menuArray.push({menuID:'#projects', menu:'Projects'});
+		}
 		for (var p in projects.projects) {	
 			$("#projects").append(HTMLprojectStart);
 			var projecttitle = HTMLprojectTitle.replace("%data%",projects.projects[p].title);
@@ -239,8 +237,31 @@ var projects = {
 	} 
 }
 
-//display
-projects.display();
+//TODO style it
+var navigation = {
+	display : function(){
+				if (menuArray.length>0) {						
+					$("#navigation").append(HTMLnavStart);
+					$(".nav-entry:last").append(HTMLworkBulletStart);
+					for (var i = 0; i < menuArray.length; i++) {	
+					    var formatNav = HTMLnavSection.replace("%data%", menuArray[i].menu);	
+					    formatNav = formatNav.replace("#", menuArray[i].menuID);			
+						var point = HTMLworkBulletPoint.replace("%data%",formatNav);
+						$(".nav-entry:last").append(point);
+					};
+					$(".nav-entry:last").append(HTMLworkBulletEnd);
+				}
+	}
+}
 
+//placement
+var menuArray = [];
+bio.display();
+projects.display();
+work.display();
+education.display();
+education.displayonline();
 //$("#header").append(internationalizeButton);
 $("#mapDiv").append(googleMap);
+//create navigation menu
+navigation.display();

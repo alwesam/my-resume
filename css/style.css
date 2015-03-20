@@ -13,6 +13,20 @@
   padding-right: 5%;
 }
 
+
+.nav-item {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4A4A4A;
+}
+
+.nav-list{
+  padding-left: 30px;
+  list-style-type: upper-roman;
+
+  padding-bottom: 20px;
+}
+
 h1 {
   font-size: 40px;
   color: #F5A623;
@@ -115,9 +129,19 @@ a {
   background-color: #4A4A4A;
 }
 
+.black{
+  background-color: #333;
+}
+
+.dark-gray-text{
+  /*color: #333;*/
+  color: #4A4A4A;
+}
+
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  /*background-color: #484848;*/
+  background-color: #333;
 }
 
 .flex-box {

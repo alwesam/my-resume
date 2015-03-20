@@ -16,7 +16,7 @@ var bio = {
 	},
 	"pic": "images/wesam-portrait.png",
 	"welcome": "There is no substitute for hard work - Thomas Edison",
-	"skills": ["HTML/CSS  ","Java  ","Javascript  ","Android"],
+	"skills": ["Java", "Android", "Javascript","JQuery", "HTML/CSS"],
 	display : function () {
 				//formating
 				var formattedName = HTMLheaderName.replace("%data%",bio.name);
@@ -91,7 +91,7 @@ var education = {
 	display : function () {
 
 		//add to menu array
-		if (education.schools.length>0)
+		if (education.schools.length>0 || education.online.length>0)
 			menuArray.push({menuID:'#education', menu:'Education'});
 
 		for (var e in education.schools) {	
@@ -106,10 +106,10 @@ var education = {
 			$(".education-entry:last").append(schoolname+schooldegree+schooldate+schoollocation+schoolmajor);
 			
 		};
-	},
 
-	displayonline : function () {
-		$("#education").append(HTMLonlineClasses);
+		//online education
+		if(education.online.length>0)
+			$("#education").append(HTMLonlineClasses);
 
 		for (var on in education.online) {	
 			$("#education").append(HTMLschoolStart);	
@@ -122,6 +122,8 @@ var education = {
 			onlineurl = onlineurl.replace("#",education.online[on].urlcourse);
 			$(".education-entry:last").append(onlinetitle+onlineschool+onlinedate+onlineurl);
 		};
+
+
 	}
 
 };
@@ -237,31 +239,35 @@ var projects = {
 	} 
 }
 
-//TODO style it
-var navigation = {
-	display : function(){
-				if (menuArray.length>0) {						
-					$("#navigation").append(HTMLnavStart);
-					$(".nav-entry:last").append(HTMLworkBulletStart);
-					for (var i = 0; i < menuArray.length; i++) {	
-					    var formatNav = HTMLnavSection.replace("%data%", menuArray[i].menu);	
-					    formatNav = formatNav.replace("#", menuArray[i].menuID);			
-						var point = HTMLworkBulletPoint.replace("%data%",formatNav);
-						$(".nav-entry:last").append(point);
-					};
-					$(".nav-entry:last").append(HTMLworkBulletEnd);
+var mapDisplay = function () {
+					menuArray.push({menuID:'#mapDiv', menu:'Where I\'ve Lived and Worked'});
+					$("#mapDiv").append(googleMap);
 				}
-	}
-}
 
-//placement
+var navigation = function(){
+					if (menuArray.length>0) {						
+						$("#navigation").append(HTMLnavStart);
+						$(".nav-entry:last").append(HTMLnavBulletStart);
+						for (var i = 0; i < menuArray.length; i++) {	
+					    	var formatNav = HTMLnavSection.replace("%data%", menuArray[i].menu);	
+					    	formatNav = formatNav.replace("#", menuArray[i].menuID);			
+							var point = HTMLnavBulletPoint.replace("%data%",formatNav);
+							//$(".nav-entry:last").append(point);
+							$(".nav-list:last").append(point);
+						};
+						//$(".nav-entry:last").append(HTMLnavBulletEnd);
+					}
+				}
+	
+
+//placement in that order
+//declare global variable that will hold menu object items
 var menuArray = [];
 bio.display();
 projects.display();
 work.display();
 education.display();
-education.displayonline();
-//$("#header").append(internationalizeButton);
-$("#mapDiv").append(googleMap);
+mapDisplay();
 //create navigation menu
-navigation.display();
+navigation();
+//$("#header").append(internationalizeButton);

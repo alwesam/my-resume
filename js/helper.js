@@ -14,7 +14,7 @@ These are HTML strings. As part of the course, you'll be using JavaScript functi
 replace the %data% placeholder text you see in them.
 */
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
-var HTMLheaderRole = '<span>%data%</span><hr/>';
+var HTMLheaderRole = '<span class="white-text">%data%</span><hr/>';
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
 var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
@@ -33,6 +33,8 @@ var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></
 //navigation menu
 var HTMLnavStart = '<nav class="nav-entry"></nav>';
 var HTMLnavSection = '<a href="#">%data%</a>';
+var HTMLnavBulletStart = '<ul class="nav-list"></ul>';
+var HTMLnavBulletPoint = '<li class="nav-item">%data%</li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
 var HTMLworkEmployer = '<a href="#">%data%';
@@ -40,7 +42,6 @@ var HTMLworkTitle = ' - %data%</a>';
 var HTMLworkDates = '<div class="date-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
-//TODO add some styling
 var HTMLworkBulletStart = '<ul>';
 var HTMLworkBulletPoint = '<li>%data%</li>';
 var HTMLworkBulletEnd = '</ul>';
@@ -60,7 +61,6 @@ var HTMLschoolMajor = '<em><br>%data%</em>';
 
 var HTMLonlineClasses = '<h3>Online Courses</h3>';
 
-//var HTMLonlineStart = '<div class="online-entry"></div>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';

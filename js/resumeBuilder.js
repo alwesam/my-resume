@@ -271,3 +271,9 @@ mapDisplay();
 //create navigation menu
 navigation();
 //$("#header").append(internationalizeButton);
+
+//querSelector only works after document is loaded
+document.querySelector('h1').onclick = function() {
+    var iName = inName(bio.name);// || function(){};
+    $('#name').html(iName); 
+}

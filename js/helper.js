@@ -73,13 +73,13 @@ var googleMap = '<div id="map"></div>';
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
-//TODO review and see if I can move to resume builder
-$(document).ready(function() {
+
+/*$(document).ready(function() {
   $('button').click(function() {
     var iName = inName(bio.name) || function(){};
     $('#name').html(iName);  
   });
-});
+}); */
 
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
@@ -97,7 +97,14 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
+  /*if(loc.pageX>75 && loc.pageX<420){
+    if(loc.pageY>40 && loc.pageY<75) {
+      var iName = inName(bio.name);
+      $('#name').html(iName);  
+    }
+  } */
   logClicks(loc.pageX,loc.pageY);
+  
 });
 
 function inName(oldName) {
@@ -106,6 +113,16 @@ function inName(oldName) {
   finalName[0] = finalName[0].slice(0,1).toUpperCase()+
            finalName[0].slice(1).toLowerCase();
   finalName[1] = finalName[1].slice(0).toUpperCase();
+  return finalName[0]+' '+finalName[1];
+} 
+
+function caName(oldName) {
+  var finalName;
+  finalName = oldName.trim().split(' ');
+  finalName[0] = finalName[0].slice(0,1).toUpperCase()+
+           finalName[0].slice(1).toLowerCase();
+  finalName[1] = finalName[1].slice(0,1).toUpperCase()+
+           finalName[1].slice(1).toLowerCase();
   return finalName[0]+' '+finalName[1];
 } 
 

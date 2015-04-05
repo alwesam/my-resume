@@ -203,7 +203,7 @@ var projects = {
 		{
 			"title": "Frogger",
 			"date": "2015",
-			"description": "a simple arcade game in javascript where the player attempts to collect gems and avoid enemy bugs in 60 seconds or less.",
+			"description": "a simple arcade game in javascript where the player avoids enemy bugs and collect items in 60 seconds or less.",
 			"images" : ["../images/Frogger.png"],
 			"url": "http://vandevsam.com/arcade/frogger.html"
 		},

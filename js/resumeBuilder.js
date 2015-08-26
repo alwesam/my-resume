@@ -203,13 +203,14 @@ var projects = {
       "modal" : "adventure",
 			"url": "http://alwesam.github.io/adventure_trivia_client"
 		},
-		/*{
+		{
 			"title": "Student Portal",
 			"date": "2015",
 			"description": "Led a weekend group effort to build a student portal for CodeCore. Ongoing alumni project.",
-      "images": "",
-      "modal" : "portal"
-		},*/
+      "images": ["images/student-portal.png"],
+      "modal" : "portal",
+			"url": "http://vandevsam.com"
+		},
 		{
 			"title": "Project Management Tool",
 			"date": "2015",
@@ -231,7 +232,9 @@ var projects = {
 		{
 			"title": "Frogger",
 			"date": "2015",
-			"description": "a simple arcade game in javascript where the player avoids enemy bugs and collect items in 60 seconds or less.",
+			"description": "a simple arcade game in javascript where the player avoids enemy bugs and collect items \
+                     in 60 seconds or less. Made use of JavaScript OOP techniques and gained a better understanding \
+                     of game design including rendering and collision detection.",
 			"images" : ["images/Frogger.png"],
       "modal" : "frogger",
 			"url": "http://alwesam.github.io/frogger-clone-game"
@@ -239,7 +242,8 @@ var projects = {
 		{
 			"title": "Neighborhood Map",
 			"date": "2015",
-			"description": "A Frontend single page map displaying selected spots of popular areas in Vancouver",
+			"description": "A Frontend single page map displaying selected spots of popular areas in Vancouver. \
+                      Developed using JavaScript, KnockOut JS, JQuery, and Google Maps API.",
 			"images" : ["images/neighborhood-map.png"],
       "modal" : "nmap",
 			"url": "http://alwesam.github.io/neighborhoodMap"
@@ -265,7 +269,8 @@ var projects = {
       //insert logic to arrage in rows and columns
       if(col_j%2 == 0) {
         $("#projects").append(HTMLProjectRow.replace("%row-id%", row_i)); //start here
-        if (col_j>=2) i++; //increment from now on
+        //TODO this is strange ask
+        //if (col_j>=2) row_i++; //increment from now on
       }
       $("#"+row_i+"-projectrow").append(HTMLProjectColumn.replace("%col-id%", col_j));
 			$("#"+col_j+"-projectcolumn").append(HTMLprojectStart.replace("%project-id%", col_j));

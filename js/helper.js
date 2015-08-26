@@ -46,7 +46,11 @@ var HTMLworkBulletStart = '<ul>';
 var HTMLworkBulletPoint = '<li>%data%</li>';
 var HTMLworkBulletEnd = '</ul>';
 
-var HTMLprojectStart = '<div class="project-entry"></div>';
+//project column row
+var HTMLProjectRow = '<div id="%row-id%-projectrow" class="row text-center"></div>';
+var HTMLProjectColumn = '<div id="%col-id%-projectcolumn" class="col-md-4"></div>'
+
+var HTMLprojectStart = '<div id="%project-id%-project" class="project-entry"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p><br>%data%</p>';
@@ -70,12 +74,12 @@ var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 //Modal
-var HTMLmodalHeader='<div class="modal-header"><h4 class="modal-title">%modal-title%</h4></div>';
+var HTMLmodalHeader='<div class="modal-header"><h4 class="modal-title text-center">%modal-title%</h4></div>';
 var HTMLmodalFooter='<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>';
 var HTMLmodalBody='<div class="modal-body"><p>%description%</p></div>';
 var HTMLmodalContent = '<div id="%modal-id%-content" class="modal-content"></div>'; 
 var HTMLmodalDialog  = '<div id="%modal-id%-dialog" class="modal-dialog"></div>';
-var HTMLmodal = '<div class="modal fade" id="%modal-id%" tabindex="-1" role="dialog"></div>';
+var HTMLmodal = '<div class="modal fade" id="%modal-id%" tabindex="-1" role="dialog" aria-hidden="true"></div>';
 
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.

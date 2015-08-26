@@ -16,7 +16,7 @@ var bio = {
 	},
 	"pic": "images/wesam-portrait.png",
 	"welcome": "There is no substitute for hard work - Thomas Edison",
-	"skills": ["Ruby on Rails", "Javascript", "JQuery", "React", "KnockOut", "HTML/CSS", "Java", "Android SDK", "SQL", "C", "Git"],
+	"skills": ["Ruby", "Rails", "Javascript", "JQuery", "React", "KnockOut", "HTML/CSS", "Java", "Android SDK", "SQL", "C", "Git"],
 	display : function () {
 				//formating
 				var formattedName = HTMLheaderName.replace("%data%",bio.name);
@@ -203,13 +203,13 @@ var projects = {
       "modal" : "adventure",
 			"url": "http://alwesam.github.io/adventure_trivia_client"
 		},
-		{
+		/*{
 			"title": "Student Portal",
 			"date": "2015",
 			"description": "Led a weekend group effort to build a student portal for CodeCore. Ongoing alumni project.",
       "images": "",
       "modal" : "portal"
-		},
+		},*/
 		{
 			"title": "Project Management Tool",
 			"date": "2015",
@@ -258,19 +258,33 @@ var projects = {
 		if (projects.projects.length>0){
 			menuArray.push({menuID:'#projects', menu:'Projects'});
 		}
+    var row_i=0; //row
+    var col_j=0; //column
+
 		for (var p in projects.projects) {	
-			$("#projects").append(HTMLprojectStart);
+      //insert logic to arrage in rows and columns
+      if(col_j%2 == 0) {
+        $("#projects").append(HTMLProjectRow.replace("%row-id%", row_i)); //start here
+        if (col_j>=2) i++; //increment from now on
+      }
+      $("#"+row_i+"-projectrow").append(HTMLProjectColumn.replace("%col-id%", col_j));
+			$("#"+col_j+"-projectcolumn").append(HTMLprojectStart.replace("%project-id%", col_j));
+
+			//$("#projects").append(HTMLprojectStart);
 			var projecttitle = HTMLprojectTitle.replace("%data%",projects.projects[p].title);
 			projecttitle = projecttitle.replace("#",projects.projects[p].url);
 			var projectdesc = HTMLprojectDescription.replace("%data%",projects.projects[p].description);
 			var projectdate = HTMLprojectDates.replace("%data%",projects.projects[p].date);
-			$(".project-entry:last").append(projecttitle+projectdate+projectdesc);
+			//$(".project-entry:last").append(projecttitle+projectdate+projectdesc);
+			//$(".project-entry:last").append(projecttitle);
+			$("#"+col_j+"-project").append(projecttitle);
 
 			if(projects.projects[p].images.length>0) {
 				for (var i = 0; i < projects.projects[p].images.length; i++) {
 					var image = HTMLprojectImage.replace("%data%",projects.projects[p].images[i]);
           image = image.replace("%modal%",projects.projects[p].modal);
-					$(".project-entry:last").append(image);
+					//$(".project-entry:last").append(image);
+					$("#"+col_j+"-project").append(image);
 				}				
         //building a modal for the image
         var modalTarget = projects.projects[p].modal;
@@ -285,6 +299,8 @@ var projects = {
         $("#"+modalTarget+"-content").append(HTMLmodalBody.replace("%description%", projects.projects[p].description));
         $("#"+modalTarget+"-content").append(HTMLmodalFooter);
 			}
+      
+      col_j=col_j+1; //increment column everytime
 
 		}		
 	} 

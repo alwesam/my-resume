@@ -50,7 +50,7 @@ var HTMLprojectStart = '<div class="project-entry"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p><br>%data%</p>';
-var HTMLprojectImage = '<img src="%data%">';
+var HTMLprojectImage = '<img src="%data%" data-toggle="modal" data-target="#%modal%">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="#">%data%';
@@ -69,17 +69,13 @@ var HTMLonlineURL = '<br><a href="#">%data%</a>';
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
-
-/*
-The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
-*/
-
-/*$(document).ready(function() {
-  $('button').click(function() {
-    var iName = inName(bio.name) || function(){};
-    $('#name').html(iName);  
-  });
-}); */
+//Modal
+var HTMLmodalHeader='<div class="modal-header"><h4 class="modal-title">%modal-title%</h4></div>';
+var HTMLmodalFooter='<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>';
+var HTMLmodalBody='<div class="modal-body"><p>%description%</p></div>';
+var HTMLmodalContent = '<div id="%modal-id%-content" class="modal-content"></div>'; 
+var HTMLmodalDialog  = '<div id="%modal-id%-dialog" class="modal-dialog"></div>';
+var HTMLmodal = '<div class="modal fade" id="%modal-id%" tabindex="-1" role="dialog"></div>';
 
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.

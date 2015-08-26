@@ -16,7 +16,7 @@ var bio = {
 	},
 	"pic": "images/wesam-portrait.png",
 	"welcome": "There is no substitute for hard work - Thomas Edison",
-	"skills": ["Java", "Android", "Javascript","JQuery", "HTML/CSS"],
+	"skills": ["Ruby on Rails", "Javascript", "JQuery", "React", "KnockOut", "HTML/CSS", "Java", "Android SDK", "SQL", "C", "Git"],
 	display : function () {
 				//formating
 				var formattedName = HTMLheaderName.replace("%data%",bio.name);
@@ -62,25 +62,25 @@ var bio = {
 var education = {
 	"schools" : [
 		{
+			"name": "CodeCore",
+			"years": "2015",
+			"degree": "Web Development Certificate",
+			"major": "Accelerated web development training in Ruby on Rails",
+			"location": "Vancovuer, BC",
+			"url" : "http://www.codecore.ca"
+		},
+		{
 			"name": "University of Alberta",
 			"years": "2010",
 			"degree": "M.Sc.",
 			"major": "Electrical and Computer Engineering",
 			"location": "Edmonton, AB",
 			"url" : "http://www.ualberta.ca"
-		},
-		{
-			"name": "Queen's University",
-			"years": "2004",
-			"degree": "B.Sc.",
-			"major": "Electrical and Computer Engineering (First Class Honours)",
-			"location": "Kingston, ON",
-			"url" : "http://www.queensu.ca"
 		}
 	],
 	"online" : [
 		{
-			"title": "Front-end Web Developer Nanodegree (in progress)",
+			"title": "Front-end Web Developer Nanodegree",
 			"school": "Udacity",
 			"dates": 2015,
 			"url": "http://www.udacity.com",
@@ -140,9 +140,7 @@ var work = {
 			"bullets" : [
 				"Successfully configured a 3rd part intellectual property (IP) block to process system interrupts from chip resources and relay them to main processor. Designed a flow to integrate multiple configurations of the IP seamlessly and automatically. ",
 				"Conducted power leakage analysis and filed power savings recommendations that reduced chip subsystem power consumption by about 20%.",
-				"Systematically investigated and fixed multiple clock-crossing (CDC) violations that risked chip's functional integrity.",
-				"Integrated and reverse-engineered third-party IP code into subsystem design for thorough behavioural analysis that enabled potential problem identification and workaround creation.",
-				"Innovated a custom register map to interface various register blocks with firmware without adding design complexity."
+				"Systematically investigated and fixed multiple clock-crossing (CDC) violations that risked chip's functional integrity."
 				],
 			"Description": "Collaborated on developing two product chips for networks infrastructure enabling efficient and dynamic delivery and storage of big data."	
 		},
@@ -194,25 +192,65 @@ var work = {
 var projects = {
 	"projects" : [
 		{
-			"title": "Android App ShareSpot",
-			"date": "2014-2015",
-			"description": "An Android application to store and share locations in public or private groups.  Currenlty in beta release.",
-			"images" : ["images/shareloc-icon.png"],
-			"url": "http://vandevsam.com/blog/category/android/"
+			"title": "Adventure Trivia",
+			"date": "2015",
+			"description": "A single page game application where players use their knowledge \
+                     to create or play trivias. Separated front-end development with \
+                     React JS from Rails. App to be released on mobile platform using \
+                     PhoneGap. Developed using JavaScript, React JS, Google Maps API, \
+                     Ruby on Rails, HTML/CSS, BootStrap, Postgres.",
+			"images" : ["images/adventure-trivia.png"],
+      "modal" : "adventure",
+			"url": "http://alwesam.github.io/adventure_trivia_client"
+		},
+		{
+			"title": "Student Portal",
+			"date": "2015",
+			"description": "Led a weekend group effort to build a student portal for CodeCore. Ongoing alumni project.",
+      "images": "",
+      "modal" : "portal"
+		},
+		{
+			"title": "Project Management Tool",
+			"date": "2015",
+			"description": "An online project managment tool developed using Ruby on Rails.",
+			"images" : ["images/pm-tool.png"],
+      "modal" : "pmtool",
+			"url": "http://alwesam-pmtool.herokuapp.com"
+		},
+		{
+			"title": "Code Snippet",
+			"date": "2015",
+			"description": "Programmers can store useful code snippets in JavaScript, \
+                Ruby, CSS, and HTML.  Developed in partnership with a fellow \
+                CodeCore bootcamp student (I worked on the backend stuff)",
+			"images" : ["images/code-snippet.png"],
+      "modal" : "snippet",
+			"url": "http://codesnipper.herokuapp.com"
 		},
 		{
 			"title": "Frogger",
 			"date": "2015",
 			"description": "a simple arcade game in javascript where the player avoids enemy bugs and collect items in 60 seconds or less.",
-			"images" : ["../images/Frogger.png"],
-			"url": "http://vandevsam.com/arcade/frogger.html"
+			"images" : ["images/Frogger.png"],
+      "modal" : "frogger",
+			"url": "http://alwesam.github.io/frogger-clone-game"
 		},
 		{
 			"title": "Neighborhood Map",
 			"date": "2015",
-			"description": "Coming soon",
-			"images" : [],
-			"url": "http://vandevsam.com"
+			"description": "A Frontend single page map displaying selected spots of popular areas in Vancouver",
+			"images" : ["images/neighborhood-map.png"],
+      "modal" : "nmap",
+			"url": "http://alwesam.github.io/neighborhoodMap"
+		},
+		{
+			"title": "Android App ShareSpot",
+			"date": "2014-2015",
+			"description": "An Android application to store and share locations in public or private groups. Currenlty in beta release.",
+			"images" : ["images/shareloc-icon.png"],
+      "modal" : "shareloc",
+			"url": "http://vandevsam.com/blog/2015/03/sharespot-1-0-beta-testing-with-crashlytics"
 		}
 	],
 
@@ -231,11 +269,24 @@ var projects = {
 			if(projects.projects[p].images.length>0) {
 				for (var i = 0; i < projects.projects[p].images.length; i++) {
 					var image = HTMLprojectImage.replace("%data%",projects.projects[p].images[i]);
+          image = image.replace("%modal%",projects.projects[p].modal);
 					$(".project-entry:last").append(image);
-				};				
+				}				
+        //building a modal for the image
+        var modalTarget = projects.projects[p].modal;
+        var modal = HTMLmodal.replace("%modal-id%", modalTarget);
+        $("#modals").append(modal);
+        //append dialog to modal
+        $("#"+modalTarget).append(HTMLmodalDialog.replace("%modal-id%", modalTarget));
+        //append content now to dialog
+        $("#"+modalTarget+"-dialog").append(HTMLmodalContent.replace("%modal-id%", modalTarget));
+        //append body, header, and footer to dialog
+        $("#"+modalTarget+"-content").append(HTMLmodalHeader.replace("%modal-title%", projects.projects[p].title));
+        $("#"+modalTarget+"-content").append(HTMLmodalBody.replace("%description%", projects.projects[p].description));
+        $("#"+modalTarget+"-content").append(HTMLmodalFooter);
 			}
 
-		};		
+		}		
 	} 
 }
 

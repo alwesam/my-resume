@@ -131,6 +131,22 @@ var education = {
 //third object: work
 var work = {
 	"jobs" : [
+    {
+     "employer": "Defiant Ventures",
+     "date": "November 2015-Present",
+     "title": "Independent Contractor",
+     "location": "Vancouver, BC",
+     "bullets" : [],
+     "Description" : "Building an online platform for connecting people in the film industry" 
+    },
+    {
+     "employer": "StartGrowingFood",
+     "date": "November 2015-February 2016",
+     "title": "Independent Contractor",
+     "location": "Vancouver, BC",
+     "bullets" : [],
+     "Description" : "Revamped a gardening web application and built an algorithm for planting seeds in  different zones among multiple planters." 
+    },
 		{
 			"employer": "PMC-Sierra",
 			"url" : "http://www.pmcs.com",
@@ -143,19 +159,6 @@ var work = {
 				"Systematically investigated and fixed multiple clock-crossing (CDC) violations that risked chip's functional integrity."
 				],
 			"Description": "Collaborated on developing two product chips for networks infrastructure enabling efficient and dynamic delivery and storage of big data."	
-		},
-		{
-			"employer": "University of Alberta, ECE Department",
-			"url" : "http://www.ece.ualberta.ca",
-			"date": "January 2007- May 2010",
-			"title": "Graduate Research Assistant",
-			"location": "Edmonton, AB",
-			"bullets" : [
-				"Led two tape-out projects that developed mixed-signal integrated circuit (IC) chips for controlling and monitoring microﬂuidic processes for capillary electrophoresis (CE). Designed electronics that enabled scale down of targeted CE platform from 100cm at 30kV to 6mm at 40V enabling portability and lower costs.",
-				"Developed novel high voltage devices and demonstrated functionality in level shifter circuits up to 40V. Level shifter circuits with the novel devices occupy 80% less die area.",
-				"Helped establish an IC CAD flow on supplier’s semiconductor’s CMOS process, then chosen to present results to supplier’s engineers."
-				],
-			"Description": "Worked with a team developing an inexpensive, portable, and miniaturized Lab-on-chip (LoC) systems."	
 		}
 	],
 
@@ -210,43 +213,6 @@ var projects = {
       "images": ["images/student-portal.png"],
       "modal" : "portal",
 			"url": "http://vandevsam.com"
-		},
-		{
-			"title": "Project Management Tool",
-			"date": "2015",
-			"description": "An online project managment tool developed using Ruby on Rails.",
-			"images" : ["images/pm-tool.png"],
-      "modal" : "pmtool",
-			"url": "http://alwesam-pmtool.herokuapp.com"
-		},
-		{
-			"title": "Code Snippet",
-			"date": "2015",
-			"description": "Programmers can store useful code snippets in JavaScript, \
-                Ruby, CSS, and HTML.  Developed in partnership with a fellow \
-                CodeCore bootcamp student (I worked on the backend stuff)",
-			"images" : ["images/code-snippet.png"],
-      "modal" : "snippet",
-			"url": "http://codesnipper.herokuapp.com"
-		},
-		{
-			"title": "Frogger",
-			"date": "2015",
-			"description": "a simple arcade game in javascript where the player avoids enemy bugs and collect items \
-                     in 60 seconds or less. Made use of JavaScript OOP techniques and gained a better understanding \
-                     of game design including rendering and collision detection.",
-			"images" : ["images/Frogger.png"],
-      "modal" : "frogger",
-			"url": "http://alwesam.github.io/frogger-clone-game"
-		},
-		{
-			"title": "Neighborhood Map",
-			"date": "2015",
-			"description": "A Frontend single page map displaying selected spots of popular areas in Vancouver. \
-                      Developed using JavaScript, KnockOut JS, JQuery, and Google Maps API.",
-			"images" : ["images/neighborhood-map.png"],
-      "modal" : "nmap",
-			"url": "http://alwesam.github.io/neighborhoodMap"
 		},
 		{
 			"title": "Android App ShareSpot",
